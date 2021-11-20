@@ -1,4 +1,3 @@
-import java.util.Random;
 import java.util.Scanner;
 
 public class TrinarySearch {
@@ -9,16 +8,23 @@ public class TrinarySearch {
 	public static void main(String[] args) {
 		TrinarySearch ts = new TrinarySearch();
 		for(int i = 0; i < 5; i++) {
-			//Random rand = new Random();
 			int arr[] = new int[10];
 			for(int j = 0; j < 10; j++) {
-				int max = 10 * (j+1);
 				int min = 0;
-				if(j > 0){
-					min = arr[j-1];
+				System.out.println();
+				System.out.print(j);
+				System.out.println();
+				int prev = j-1;
+				if(j < 1) {
+					min = 0;
+				}else {
+					min = arr[prev];
 				}
-				//System.out.print(max + " " + min);
-				//System.out.println();
+				int max = 2 * (j+1);
+				
+				System.out.println();
+				System.out.print(min + " " + max);
+				System.out.println();
 				arr[i] = (int)Math.floor(Math.random()*(max-min+1)+min);
 				System.out.print(arr[i] + " ");
 			}
