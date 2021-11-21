@@ -8,25 +8,21 @@ public class TrinarySearch {
 	public static void main(String[] args) {
 		TrinarySearch ts = new TrinarySearch();
 		for(int i = 0; i < 5; i++) {
+			System.out.println("Test " + (i + 1) + "");
 			int arr[] = new int[10];
-			for(int j = 0; j < 10; j++) {
+			System.out.println("bellow is your random in order array:");
+			int randLength = (int)Math.floor(Math.random()*(50-10+1)+10);
+			System.out.println(randLength);
+			for(int j = 0; j < randLength; j++) {
+
 				int min = 0;
-				System.out.println();
-				System.out.print(j);
-				System.out.println();
-				int prev = j-1;
-				if(j < 1) {
-					min = 0;
-				}else {
-					min = arr[prev];
+				if(j > 0){
+					min = arr[j-1];
 				}
 				int max = 2 * (j+1);
-				
-				System.out.println();
-				System.out.print(min + " " + max);
-				System.out.println();
-				arr[i] = (int)Math.floor(Math.random()*(max-min+1)+min);
-				System.out.print(arr[i] + " ");
+				//System.out.println(min + " " + max);
+				arr[j] = (int)Math.floor(Math.random()*(max-min+1)+min);
+				System.out.print(arr[j] + " ");
 			}
 			System.out.println();
 			
@@ -35,25 +31,24 @@ public class TrinarySearch {
 			Scanner Obj = new Scanner(System.in);
 			System.out.println("please enter a number");
 			int findNum = Obj.nextInt();
-			//test 1
 			
-				answer = ts.trinarySearch(arr, findNum, 0, arr.length-1);
-				System.out.println(findNum);
-				System.out.println("Test " + i + "");
-				if(answer != -1) {
-					System.out.println("You are looking for the number" + (arr)[answer] + " and it is located at index " + answer + "");
-				}else {
-					System.out.println("sorry that number is not in the list");
-				}
-				System.out.println("");
-				//System.out.println("the number you are looking for it number " + arr1[answer] + " and it is located at index " + answer + "");
+			answer = ts.trinarySearch(arr, findNum, 0, arr.length-1);
+			if(answer != -1) {
+				System.out.println("You are looking for the number " + (arr)[answer] + " and it is located at index " + answer + ".");
+			}else {
+				System.out.println("sorry that number is not in the list");
+			}
+			System.out.println("");
+			//System.out.println("the number you are looking for it number " + arr1[answer] + " and it is located at index " + answer + "");
 
 		}
 	}
 	
 	/**
-	 * 
-	 * @param arr
+	 * gets passed an array, a number that it wants to search the array for, and a beginning and end
+	 * It does this by breaking the array into 3 parts then checks if the number falls bellow or equal to/above
+	 * it keeps narrowing it down till it finds and returns the first index containing said number
+	 * @param the already sorted array
 	 * @param findNum
 	 * @param start
 	 * @param end
@@ -63,7 +58,7 @@ public class TrinarySearch {
 		int arrLength = end - start;
 		//checks if the length of the array divided by 3 has a remainder
 		int comp = arrLength%3; 
-		System.out.println("" + start + " " + end + "");
+		//System.out.println("" + start + " " + end + "");
 		int index1 = 0;
 		int index2 = 0;
 		int answer = 0;
